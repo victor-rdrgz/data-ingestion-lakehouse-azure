@@ -1,0 +1,27 @@
+{
+  "DATABRICKS_CONFIG_PROFILE": "DATAENGINEERING",
+  "EXECUTION_ENVIRONMENT": "PYSPARK",
+  "output_partitions": 10,
+  "data_type_information": {
+    "ventas_online": {
+      "landing_path": "../data/landing/ventas/ventas_online/",
+      "base_target_path": "../data/bronze/ventas/ventas_online/",
+      "periodicidad": "horaria"
+    },
+    "inventario": {
+      "landing_path": "../data/landing/inventario/entradas_salidas/",
+      "base_target_path": "../data/bronze/inventario/entradas_salidas/",
+      "periodicidad": "horaria"
+    },
+    "logistica": {
+      "landing_path": "../data/landing/logistica/envios/",
+      "base_target_path": "../data/bronze/logistica/envios/",
+      "periodicidad": "diaria"
+    },
+    "forecast_data": {
+      "landing_path": "../data/landing/meteorologia/datos_observados/",
+      "base_target_path": "../data/bronze/meteorologia/datos_observados/",
+      "periodicidad": "horaria"
+    }
+  }
+}

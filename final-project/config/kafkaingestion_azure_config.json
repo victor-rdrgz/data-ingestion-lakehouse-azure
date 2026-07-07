@@ -1,0 +1,5 @@
+{
+  "allowed_file_formats": ["avro", "json"],
+  "data_type_information": {
+  }
+}

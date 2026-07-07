@@ -1,0 +1,11 @@
+# Required connection configs for Kafka producer, consumer, and admin
+bootstrap.servers=<your-bootstrap-server>:9092
+security.protocol=SASL_SSL
+sasl.mechanisms=PLAIN
+sasl.username=<your-api-key>
+sasl.password=<your-api-secret>
+
+# Best practice for higher availability in librdkafka clients prior to 1.7
+session.timeout.ms=45000
+
+client.id=ccloud-python-client

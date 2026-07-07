@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=67.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "motor_ingesta"
+version = "0.1.0"
+description = "Módulo de ingestión de datos batch parametrizada para Databricks"
+authors = [
+  { name="Víctor Daniel Rodríguez Pérez", email="victor.rdrgz.prz@gmail.com" }
+]
+readme = "README.md"
+requires-python = ">=3.11"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]

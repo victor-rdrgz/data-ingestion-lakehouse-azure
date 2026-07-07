@@ -1,0 +1,119 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "name": "clicked_items",
+      "type": {
+        "type": "array",
+        "elementType": {
+          "type": "array",
+          "elementType": "string",
+          "containsNull": true
+        },
+        "containsNull": true
+      },
+      "nullable": true,
+      "metadata": {
+        "description": "IDs de productos y posiciones que el usuario ha clicado"
+      }
+    },
+    {
+      "name": "customer_id",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "description": "Identificador único del cliente"
+      }
+    },
+    {
+      "name": "customer_name",
+      "type": "string",
+      "nullable": true,
+      "metadata": {
+        "description": "Nombre completo del cliente"
+      }
+    },
+    {
+      "name": "number_of_line_items",
+      "type": "integer",
+      "nullable": true,
+      "metadata": {
+        "description": "Número total de productos distintos en el pedido"
+      }
+    },
+    {
+      "name": "order_datetime",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "description": "Fecha del pedido en formato epoch (segundos desde 1970)"
+      }
+    },
+    {
+      "name": "order_number",
+      "type": "long",
+      "nullable": true,
+      "metadata": {
+        "description": "Identificador único del pedido"
+      }
+    },
+    {
+      "name": "ordered_products",
+      "type": {
+        "type": "array",
+        "elementType": {
+          "type": "struct",
+          "fields": [
+            { "name": "curr", "type": "string", "nullable": true, "metadata": { "description": "Moneda de la compra" } },
+            { "name": "id", "type": "string", "nullable": true, "metadata": { "description": "ID del producto" } },
+            { "name": "name", "type": "string", "nullable": true, "metadata": { "description": "Nombre o descripción del producto" } },
+            { "name": "price", "type": "long", "nullable": true, "metadata": { "description": "Precio unitario en la moneda indicada" } },
+            {
+              "name": "promotion_info",
+              "type": {
+                "type": "struct",
+                "fields": [
+                  { "name": "promo_disc", "type": "double", "nullable": true, "metadata": { "description": "Descuento aplicado" } },
+                  { "name": "promo_id", "type": "long", "nullable": true, "metadata": { "description": "ID de la promoción" } },
+                  { "name": "promo_item", "type": "string", "nullable": true, "metadata": { "description": "Producto afectado por la promoción" } },
+                  { "name": "promo_qty", "type": "long", "nullable": true, "metadata": { "description": "Cantidad sujeta a promoción" } }
+                ]
+              },
+              "nullable": true,
+              "metadata": {
+                "description": "Detalles de la promoción aplicada al producto"
+              }
+            },
+            { "name": "qty", "type": "integer", "nullable": true, "metadata": { "description": "Cantidad pedida" } },
+            { "name": "unit", "type": "string", "nullable": true, "metadata": { "description": "Unidad de medida" } }
+          ]
+        },
+        "containsNull": true
+      },
+      "nullable": true,
+      "metadata": {
+        "description": "Lista de productos incluidos en el pedido"
+      }
+    },
+    {
+      "name": "promo_info",
+      "type": {
+        "type": "array",
+        "elementType": {
+          "type": "struct",
+          "fields": [
+            { "name": "promo_disc", "type": "double", "nullable": true, "metadata": { "description": "Descuento aplicado" } },
+            { "name": "promo_id", "type": "long", "nullable": true, "metadata": { "description": "ID de la promoción" } },
+            { "name": "promo_item", "type": "string", "nullable": true, "metadata": { "description": "Producto afectado por la promoción" } },
+            { "name": "promo_qty", "type": "long", "nullable": true, "metadata": { "description": "Cantidad promocionada" } }
+          ]
+        },
+        "containsNull": true
+      },
+      "nullable": true,
+      "metadata": {
+        "description": "Promociones aplicadas a nivel de pedido"
+      }
+    }
+  ]
+}
