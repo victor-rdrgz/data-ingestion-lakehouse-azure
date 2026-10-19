@@ -1,17 +1,35 @@
 # Data Ingestion Pipelines into an Azure Data Lakehouse
 
-Data ingestion coursework: batch and streaming ingestion patterns into an Azure Data Lakehouse (Databricks + ADLS + Delta Lake), plus a Kafka Python producer client.
+Batch and streaming ingestion into an Azure Data Lakehouse (Azure Databricks + ADLS Gen2 + Delta Lake) following a Medallion architecture (raw → bronze → silver → gold), including real-time events from Kafka (Confluent Cloud) with Avro schemas.
 
-## Contents
+Part of the Master's in Big Data & Data Engineering (UCM).
 
-- `entrega/` — final graded activity: batch and streaming data-generation/ingestion notebooks, architecture diagram and full report.
-- `final-project/` — the final assignment ("motor de ingesta"): a configurable ingestion engine with iterative versions (`motor_ingesta_v2` through `v10`) evolving from a simple batch loader to a more complete pipeline, plus schema and Kafka/Azure ingestion config.
-- `batch-tarea/` — an earlier, simpler batch ingestion exercise (aggregations, daily flow).
-- `ejercicios/` — weekly exercises: file formats (Parquet, Delta Lake), file-based ingestion with Databricks Autoloader (JSON/images, full and incremental), event-based ingestion (JSON/Avro, single/multiplex), an ingestion engine exercise, and a MovieLens medallion pipeline (bronze/silver/gold).
-- `streaming-client/` — a minimal Confluent Cloud Kafka Python producer/consumer client. `client.properties.example` uses placeholder credentials — copy it to `client.properties` and fill in your own Confluent Cloud API key/secret.
+![Lakehouse architecture](entrega/diagrama.jpg)
 
-**Nota:** se han excluido del repositorio los ficheros con credenciales reales encontrados en el material original (`azure_config.json`, `schema_registry.json`, una clave de API de Confluent en texto plano) y los `wheel`/entornos virtuales.
+## Highlights
+
+- **Configurable ingestion engine** ([`final-project/src/motor_ingesta/motor_ingesta_v10.py`](final-project/src/motor_ingesta/motor_ingesta_v10.py)): a single, config-driven engine (`final-project/config/config.json`) that ingests batch files and Kafka/Avro events into Delta Lake, with a raw-file archiver and shared utilities.
+- **Streaming ingestion**: Spark Structured Streaming from Kafka (Confluent Cloud), Avro deserialization through Confluent Schema Registry, single-plex and multiplex patterns.
+- **Incremental file ingestion**: Databricks Auto Loader for JSON and images, full and incremental loads.
+- **End-to-end Medallion pipeline**: MovieLens dataset processed through bronze, silver and gold layers.
+- **Kafka client**: minimal Python producer/consumer for Confluent Cloud.
+
+## Repository structure
+
+```
+entrega/            Final graded project: batch + streaming ingestion notebooks, architecture diagram, report (PDF, in Spanish)
+final-project/      Configurable ingestion engine (Python/PySpark) and its configuration
+ejercicios/         Weekly labs: Parquet/Delta Lake, Auto Loader, event ingestion (JSON/Avro), MovieLens medallion pipeline
+streaming-client/   Confluent Cloud Kafka Python producer/consumer
+```
+
+## Security
+
+No credentials are stored in this repository. Scripts that use Confluent Schema Registry read the key from the `SCHEMA_REGISTRY_API_KEY` and `SCHEMA_REGISTRY_API_SECRET` environment variables, and `streaming-client/client.properties.example` uses placeholders.
 
 ## Stack
 
-Azure Databricks, ADLS Gen2, Delta Lake, Apache Kafka / Confluent Cloud, Python, PySpark.
+Azure Databricks · ADLS Gen2 · Delta Lake · Spark Structured Streaming · Auto Loader · Apache Kafka / Confluent Cloud · Schema Registry · Avro · Python · PySpark
+
+---
+**Author:** Víctor Daniel Rodríguez Pérez
