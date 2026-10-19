@@ -117,8 +117,9 @@ from confluent_kafka.schema_registry import SchemaRegistryClient
 
 # cambiar por las vuestras
 schema_registry_url = "https://psrc-j39np.westeurope.azure.confluent.cloud"
-schema_registry_username = "TNWAQX6EMYCFU7EI"
-schema_registry_password = "e6FVITBSIrcxCwCZN6mY0jzRKVFYN04kYdks72Q3WvEr6F8Gq1zTLIJ0UgtP6hnR"
+import os
+schema_registry_username = os.environ["SCHEMA_REGISTRY_API_KEY"]
+schema_registry_password = os.environ["SCHEMA_REGISTRY_API_SECRET"]
 
 schema_registry_conf = {'url': schema_registry_url,
                         'basic.auth.user.info' : f'{schema_registry_username}:{schema_registry_password}'}
